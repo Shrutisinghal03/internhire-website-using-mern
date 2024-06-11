@@ -1,0 +1,11 @@
+import express from 'express';
+import { Deletepost, Updatepost, addpost, getmyjobs ,getalljobs,getjob} from '../controllers/jobpost.js';
+import authuser from '../middlewares/auth.js';
+const router =express.Router(); 
+router.get("/getalljobs",getalljobs); 
+router.post("/addpost", authuser,addpost) ;
+router.put("/updatepost/:id",authuser,Updatepost);
+router.delete("/deletepost/:id",authuser,Deletepost);
+router.get("/getmyjobs",authuser,getmyjobs);
+router.get("/:id",authuser,getjob);
+export default router; 
